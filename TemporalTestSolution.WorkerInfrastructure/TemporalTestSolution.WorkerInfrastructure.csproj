@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <UserSecretsId>dotnet-TemporalTestSolution.WorkerInfrastructure-f6c51dbb-9210-43b4-87e9-497cd1f11f70</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0-preview.4.23259.5" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Temporalio" Version="0.1.0-alpha5" />
+  </ItemGroup>
+</Project>

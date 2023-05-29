@@ -1,0 +1,97 @@
+{
+    "version": "0.2.0",
+    "compounds": [
+        {
+            "name": "Api/Worker/Email",
+            "configurations": [
+                "Api",
+                "Worker",
+                "EmailWorker"
+            ],
+            "stopAll": true
+        }
+    ],
+    "configurations": [
+        {
+            "name": "Api",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildApi",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/TemporalTestSolution.Api/bin/Debug/net8.0/TemporalTestSolution.Api.dll",
+            "args": [
+                "--name ali"
+            ],
+            "cwd": "${workspaceFolder}/TemporalTestSolution.Api",
+            "stopAtEntry": false,
+            // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "Worker",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildWorker",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/TemporalTestSolution.BalanceWorker/bin/Debug/net8.0/TemporalTestSolution.BalanceWorker.dll",
+            "args": [
+                "--name worker"
+            ],
+            "cwd": "${workspaceFolder}/TemporalTestSolution.BalanceWorker",
+            "stopAtEntry": false,
+            // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
+            "name": "EmailWorker",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildEmailWorker",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/TemporalTestSolution.EmailWorker/bin/Debug/net8.0/TemporalTestSolution.EmailWorker.dll",
+            "args": [
+                "--name worker"
+            ],
+            "cwd": "${workspaceFolder}/TemporalTestSolution.EmailWorker",
+            "stopAtEntry": false,
+            // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
+            "name": "AttachToApi",
+            "type": "coreclr",
+            "request": "attach"
+        },
+        {
+            "name": "AttachToWorker",
+            "type": "coreclr",
+            "request": "attach"
+        },
+        {
+            "name": "AttachToEmail",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}
