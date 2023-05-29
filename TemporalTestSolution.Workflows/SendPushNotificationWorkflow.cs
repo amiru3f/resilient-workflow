@@ -1,4 +1,5 @@
 
+using Temporalio.Client;
 using Temporalio.Workflows;
 using TemporalTestSolution.ActivityContracts;
 
@@ -8,12 +9,26 @@ namespace TemporalTestSolution.Workflows;
 public class SendPushNotificationWorkflow
 {
     [WorkflowRun]
-    public Task<string> RunAsync(string email, string content) =>
+    public async Task<string> RunAsync(string email, string content)
+    {
 
-        Workflow.ExecuteActivityAsync(
-           (IPushService pusher) => pusher.NotifyEmail(email, content),
-           new()
-           {
-               ScheduleToCloseTimeout = TimeSpan.FromMinutes(20)
-           });
+        await Workflow.ExecuteActivityAsync(
+                   (IPushService pusher) => pusher.NotifyEmail(email, content),
+                   new()
+                   {
+                       ScheduleToCloseTimeout = TimeSpan.FromMinutes(20)
+                   });
+
+        await Workflow.ExecuteActivityAsync(
+               (IPushService pusher) => pusher.NotifySlack(email, content),
+               new()
+               {
+                   ScheduleToCloseTimeout = TimeSpan.FromMinutes(20)
+               });
+
+
+        return "Push Notification Workflow";
+    }
+
+
 }

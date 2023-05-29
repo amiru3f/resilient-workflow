@@ -31,7 +31,7 @@ public class MoneyTransferWorkflow
         await Workflow.StartChildWorkflowAsync<SendPushNotificationWorkflow>(x => x.RunAsync("solhi.amir1371@gmail.com", "done"),
             new ChildWorkflowOptions()
             {
-                 ParentClosePolicy = ParentClosePolicy.Abandon
+                ParentClosePolicy = ParentClosePolicy.Abandon
             }
         );
 

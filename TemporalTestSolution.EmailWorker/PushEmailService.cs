@@ -17,11 +17,12 @@ public class PushEmailService : IPushService
     [Activity]
     public string NotifyEmail(string email, string content)
     {
-        if (i < 2)
-        {
-            i++;
-            throw new Exception("could not send the email");
-        }
+        //retry
+        // if (i < 2)
+        // {
+        //     i++;
+        //     throw new Exception("could not send the email");
+        // }
 
         var fromAddress = new MailAddress(emailConfiguration.From, emailConfiguration.From);
         var toAddress = new MailAddress(emailConfiguration.To, emailConfiguration.To);
@@ -51,4 +52,6 @@ public class PushEmailService : IPushService
 
         return "Done";
     }
+
+    public string NotifySlack(string slackId, string content) => throw new NotImplementedException();
 }
