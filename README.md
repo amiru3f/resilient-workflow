@@ -1,0 +1,1 @@
+# This project tries to implement a resilient workflow inside a simple playground using Temporal 
