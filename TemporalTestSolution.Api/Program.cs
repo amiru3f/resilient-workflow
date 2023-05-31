@@ -12,7 +12,7 @@ app.MapGet("/transfer", async (Task<TemporalClient> lazyTemporalClient, string s
 
     var result = await temporalClient.StartWorkflowAsync(
         (MoneyTransferWorkflow wf) => wf.RunAsync(sourceIban, destinationIban),
-        new(id: Guid.NewGuid().ToString(), taskQueue: "work-queue"));
+        new(id: Guid.NewGuid().ToString(), taskQueue: "balance-queue"));
 
     return await result.GetResultAsync();
 

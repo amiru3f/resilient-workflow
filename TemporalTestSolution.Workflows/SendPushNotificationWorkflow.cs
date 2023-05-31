@@ -16,14 +16,16 @@ public class SendPushNotificationWorkflow
                    (IPushService pusher) => pusher.NotifyEmail(email, content),
                    new()
                    {
-                       ScheduleToCloseTimeout = TimeSpan.FromMinutes(20)
+                       ScheduleToCloseTimeout = TimeSpan.FromMinutes(20),
+                       TaskQueue = "email-queue"
                    });
 
         await Workflow.ExecuteActivityAsync(
                (IPushService pusher) => pusher.NotifySlack(email, content),
                new()
                {
-                   ScheduleToCloseTimeout = TimeSpan.FromMinutes(20)
+                   ScheduleToCloseTimeout = TimeSpan.FromMinutes(20),
+                   TaskQueue = "slack-queue"
                });
 
 
