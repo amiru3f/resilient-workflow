@@ -11,7 +11,6 @@ public class PushEmailService : IPushService
     {
         this.emailConfiguration = emailConfiguration;
     }
-    private static int i = 0;
     private readonly EmailConfiguration emailConfiguration;
 
     [Activity]

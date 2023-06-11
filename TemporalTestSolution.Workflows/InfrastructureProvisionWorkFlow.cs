@@ -8,8 +8,11 @@ namespace TemporalTestSolution.Workflows;
 public class InfrastructureProvisionWorkFlow
 {
     [WorkflowRun]
+#pragma warning disable CA1822
     public async Task<string> RunAsync(string iban, string bucketName, string email)
     {
+#pragma warning restore CA1822 
+
         string withdrawResponse = await Workflow.ExecuteActivityAsync(
 
             (IBalanceService balance) => balance.Withdraw(iban),
@@ -27,8 +30,6 @@ public class InfrastructureProvisionWorkFlow
             });
 
         Workflow.Logger.LogInformation("deposit done successfuly with response: {response}", depositResponse);
-
-
 
         await Workflow.ExecuteChildWorkflowAsync<ApprovalWorflow>(x => x.RunAsync(),
             new ChildWorkflowOptions()

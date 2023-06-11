@@ -18,7 +18,6 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
-
     }
 
     [BindProperty]
@@ -33,14 +32,16 @@ public class IndexModel : PageModel
 
         var temporalClient = await _lazyTemporalClient;
 
+        _logger.LogDebug("temporal client initialized");
+
         var response = await temporalClient.StartWorkflowAsync(
             (InfrastructureProvisionWorkFlow wf) => wf.RunAsync(BucketRequest.IBan, BucketRequest.BucketName, BucketRequest.Email),
             new(id: Guid.NewGuid().ToString(), taskQueue: "balance-queue"));
 
-        var result =  await response.GetResultAsync();
-
+        var result = await response.GetResultAsync();
 
         ViewData["result"] = result;
+
         return Page();
     }
 }

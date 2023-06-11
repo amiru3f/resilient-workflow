@@ -13,7 +13,7 @@ public sealed class ApprovalWorflow
     {
         string withdrawResponse = await Workflow.ExecuteActivityAsync(
 
-            (IApprovalService approver) => approver.RequestForApprove(Temporalio.Workflows.Workflow.Info.WorkflowID),
+            (IApprovalService approver) => approver.RequestForApprove(Workflow.Info.WorkflowID),
             new() { ScheduleToCloseTimeout = TimeSpan.FromHours(1), TaskQueue = "approval-queue" });
 
         await Workflow.WaitConditionAsync(() => approved);
@@ -22,5 +22,9 @@ public sealed class ApprovalWorflow
     }
 
     [WorkflowSignal]
-    public async Task ApproveSignal() => approved = true;
+    public Task ApproveSignal()
+    {
+        approved = true;
+        return Task.CompletedTask;
+    }
 }
