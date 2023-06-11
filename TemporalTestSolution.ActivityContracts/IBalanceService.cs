@@ -11,5 +11,3 @@ public interface IBalanceService
     [Activity]
     public string Deposit(string iban);
 }
-
-

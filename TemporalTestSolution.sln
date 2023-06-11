@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemporalTestSolution.Activi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemporalTestSolution.WorkerInfrastructure", "TemporalTestSolution.WorkerInfrastructure\TemporalTestSolution.WorkerInfrastructure.csproj", "{B234DE15-6368-4822-BAE5-595232F8C5C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemporalTestSolution.Web", "TemporalTestSolution.Web\TemporalTestSolution.Web.csproj", "{723DDC32-F05A-4029-87A6-534D94EEADA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{B234DE15-6368-4822-BAE5-595232F8C5C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B234DE15-6368-4822-BAE5-595232F8C5C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B234DE15-6368-4822-BAE5-595232F8C5C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{723DDC32-F05A-4029-87A6-534D94EEADA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{723DDC32-F05A-4029-87A6-534D94EEADA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{723DDC32-F05A-4029-87A6-534D94EEADA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{723DDC32-F05A-4029-87A6-534D94EEADA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

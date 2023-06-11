@@ -6,16 +6,13 @@ builder.Services.AddSingleton(ctx => TemporalClient.ConnectAsync(new("localhost:
 
 var app = builder.Build();
 
-app.MapGet("/transfer", async (Task<TemporalClient> lazyTemporalClient, string sourceIban, string destinationIban) =>
+app.MapGet("/approve", async (Task<TemporalClient> lazyTemporalClient, string id) =>
 {
     var temporalClient = await lazyTemporalClient;
+    var handle = temporalClient.GetWorkflowHandle<ApprovalWorflow>(id);
+    await handle.SignalAsync(x => x.ApproveSignal(), new());
 
-    var result = await temporalClient.StartWorkflowAsync(
-        (MoneyTransferWorkflow wf) => wf.RunAsync(sourceIban, destinationIban),
-        new(id: Guid.NewGuid().ToString(), taskQueue: "balance-queue"));
-
-    return await result.GetResultAsync();
-
+    return "approved";
 });
 
 app.Run();

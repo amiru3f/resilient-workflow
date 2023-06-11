@@ -8,5 +8,5 @@ public interface IPushService
     public string NotifyEmail(string email, string content);
 
     [Activity]
-    public string NotifySlack(string email, string content);
+    public string NotifyDiscord(string email, string content);
 }

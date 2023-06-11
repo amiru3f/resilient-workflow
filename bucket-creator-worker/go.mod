@@ -1,4 +1,4 @@
-module temporal-test-solution/slack-push-worker
+module temporal-test-solution/bucket-creator-worker
 
 go 1.20
 

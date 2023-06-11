@@ -15,10 +15,10 @@ func main() {
 	}
 	defer c.Close()
 
-	w := worker.New(c, "slack-queue", worker.Options{})
+	w := worker.New(c, "infra-queue", worker.Options{})
 
-	w.RegisterWorkflow(SendPushNotificationWorkflow)
-	w.RegisterActivity(NotifySlack)
+	w.RegisterWorkflow(InfrastructureProvisionWorkFlow)
+	w.RegisterActivity(CreateBucket)
 
 	err = w.Run(worker.InterruptCh())
 	if err != nil {

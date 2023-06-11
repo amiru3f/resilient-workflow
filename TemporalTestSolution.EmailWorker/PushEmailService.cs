@@ -53,5 +53,5 @@ public class PushEmailService : IPushService
         return "Done";
     }
 
-    public string NotifySlack(string slackId, string content) => throw new NotImplementedException();
+    public string NotifyDiscord(string discordId, string content) => throw new NotImplementedException();
 }

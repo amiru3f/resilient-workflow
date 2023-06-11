@@ -1,0 +1,29 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@{
+    var result = ViewData["result"];
+}
+
+<div class="text-center">
+    <form method="post">
+        <label for="email">Your Email:</label><br>
+        <input type="email" id="email" name="email" asp-for="BucketRequest.Email" required><br><br>
+
+        <label for="iban">Your IBAN for Direct Debit:</label><br>
+        <input type="text" id="iban" name="iban" asp-for="BucketRequest.IBan" required><br><br>
+
+        <label for="bucketName">Bucket Name:</label><br>
+        <input type="text" id="bucketName" name="bucketName" asp-for="BucketRequest.BucketName" required><br><br>
+
+        <input type="submit" value="Submit">
+
+    </form>
+</div>
+<div>
+    <label>@ViewData["result"]</label>
+</div>
